@@ -49,28 +49,8 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(signupUser.fulfilled, (state, action) => {
-      const userData = action.payload.data.data.user;
-      state.isAuthenticated = true;
-      state.username = userData.username;
-      state.id = userData.id;
-      state.iat = userData.iat;
-      state.exp = userData.exp;
-      toast.success(action.payload.data.message);
-      localStorage.setItem("taskman_auth", JSON.stringify(state));
-    });
     builder.addCase(signupUser.rejected, (_state, action) => {
       toast.error(action.error.message || "Signup failed. Please try again.");
-    });
-    builder.addCase(loginUser.fulfilled, (state, action) => {
-      const userData = action.payload.data.data.user;
-      state.isAuthenticated = true;
-      state.username = userData.username;
-      state.id = userData.id;
-      state.iat = userData.iat;
-      state.exp = userData.exp;
-      toast.success(action.payload.data.message);
-      localStorage.setItem("taskman_auth", JSON.stringify(state));
     });
     builder.addCase(loginUser.rejected, (_state, action) => {
       toast.error(action.error.message || "Login failed. Please try again.");

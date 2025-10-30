@@ -9,7 +9,7 @@
   ```
 - Create `.env` file in `client`
   ```bash
-  touch client/.env
+  touch .env
   ```
 - Add the following variables to `client/.env`
   ```env
@@ -29,7 +29,7 @@
   ```
 - Create `.env` file in `server`
   ```bash
-  touch server/.env
+  touch .env
   ```
 - Add the following variables to `server/.env`
 

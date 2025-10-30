@@ -90,11 +90,11 @@ export function AuthCard({ title, navigateTo }: AuthCardProps) {
         <form onSubmit={(e) => submit(e)}>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="username">Username</Label>
               <Input
                 id="username"
                 type="text"
-                placeholder="name@example.com"
+                placeholder="example_user"
                 value={username}
                 onChange={(e) => setUserName(e.target.value)}
               />
