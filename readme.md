@@ -63,7 +63,7 @@
 
 ## Postman Collection
 
-- Import the `TaskManager.postman_collection.json` file into Postman to access the API endpoints.
+- Import the `TaskManager.postman_collection.json` file from `server` into Postman to access the API endpoints.
 - Add the necessary environment variables in Postman for proper functionality.
 - ```bash
   server: http://localhost:3000/api/
