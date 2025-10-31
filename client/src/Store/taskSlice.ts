@@ -26,8 +26,13 @@ export const removeTask = createAsyncThunk(
 
 export const updateTask = createAsyncThunk(
   "tasks/updateTask",
-  async (payload: { taskId: string; status: ITaskStatus }) => {
-    return await updateTaskStatus(payload.taskId, payload.status);
+  async (payload: {
+    id: string;
+    title: string;
+    status: ITaskStatus;
+    description?: string;
+  }) => {
+    return await updateTaskStatus(payload);
   }
 );
 

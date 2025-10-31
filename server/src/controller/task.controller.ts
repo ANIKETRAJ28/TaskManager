@@ -59,8 +59,11 @@ class TaskController {
         throw new ApiError(401, "Unauthorized");
       }
       const taskId = req.params.id;
-      const taskData: ITask = req.body;
-      const task = await this.taskService.updateTaskDetails(userId, taskData);
+      const taskData: Omit<ITask, "id"> = req.body;
+      const task = await this.taskService.updateTaskDetails(userId, {
+        ...taskData,
+        id: taskId,
+      });
       apiHandler(res, 200, "Task status updated successfully", task);
     } catch (error) {
       errorHandler(error, res);

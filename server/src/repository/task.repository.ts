@@ -69,6 +69,7 @@ class TaskRepository {
       data: {
         title: task.title,
         description: task.description,
+        status: task.status,
       },
     });
     const updatedTask: ITask = {

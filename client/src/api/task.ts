@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { ITaskStatus } from "@/Interface/task";
+import type { ITask } from "@/Interface/task";
 import { axiosInstance } from "@/util/axios";
 
 export async function createTask(title: string, description?: string) {
@@ -32,10 +32,14 @@ export async function getTasks() {
   }
 }
 
-export async function updateTaskStatus(taskId: string, status: ITaskStatus) {
+export async function updateTaskStatus(
+  task: Omit<ITask, "createdAt" | "updatedAt">
+) {
   try {
-    const data = await axiosInstance.put(`tasks/${taskId}`, {
-      status,
+    const data = await axiosInstance.put(`tasks/${task.id}`, {
+      title: task.title,
+      description: task.description,
+      status: task.status,
     });
     return data;
   } catch (error: any) {
