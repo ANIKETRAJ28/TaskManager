@@ -11,7 +11,7 @@
   ```bash
   touch .env
   ```
-- Add the following variables to `client/.env`
+- Add the following variables to `.env`
   ```env
   VITE_BACKEND_URL=http://localhost:3000
   ```
@@ -31,7 +31,7 @@
   ```bash
   touch .env
   ```
-- Add the following variables to `server/.env`
+- Add the following variables to `.env`
 
   ```env
   PGHOSTNAME="localhost"
@@ -59,4 +59,12 @@
 - Start the development server
   ```bash
   npm run start
+  ```
+
+## Testing
+
+- To run tests, use the following command in the `server` directory
+  ```bash
+  cd server
+  npm run test
   ```
