@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import TaskService from "../service/task.service";
-import { ITaskCreate, ITaskStatus } from "../interface/task.interface";
+import { ITask, ITaskCreate, ITaskStatus } from "../interface/task.interface";
 import { ApiError } from "../util/api.util";
 import { apiHandler, errorHandler } from "../util/apiHandler.util";
 
@@ -59,12 +59,8 @@ class TaskController {
         throw new ApiError(401, "Unauthorized");
       }
       const taskId = req.params.id;
-      const status: ITaskStatus = req.body.status;
-      const task = await this.taskService.updateTaskStatus(
-        userId,
-        taskId,
-        status
-      );
+      const taskData: ITask = req.body;
+      const task = await this.taskService.updateTaskDetails(userId, taskData);
       apiHandler(res, 200, "Task status updated successfully", task);
     } catch (error) {
       errorHandler(error, res);

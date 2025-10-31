@@ -22,12 +22,8 @@ class TaskService {
     return await this.taskRepository.deleteTask(userId, id);
   }
 
-  async updateTaskStatus(
-    userId: string,
-    id: string,
-    status: ITaskStatus
-  ): Promise<ITask> {
-    const task = await this.taskRepository.updateTaskStatus(userId, id, status);
+  async updateTaskDetails(userId: string, task: ITask): Promise<ITask> {
+    await this.taskRepository.updateTaskDetails(userId, task);
     return task;
   }
 }

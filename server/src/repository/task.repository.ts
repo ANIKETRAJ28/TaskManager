@@ -57,28 +57,27 @@ class TaskRepository {
     return task.id;
   }
 
-  async updateTaskStatus(
-    userId: string,
-    id: string,
-    status: ITaskStatus
-  ): Promise<ITask> {
-    let task = await this.prisma.task.findUnique({
-      where: { id: id, userId: userId },
+  async updateTaskDetails(userId: string, task: ITask): Promise<ITask> {
+    let existingTask = await this.prisma.task.findUnique({
+      where: { id: task.id, userId: userId },
     });
-    if (!task) {
+    if (!existingTask) {
       throw new ApiError(404, "Task not found");
     }
-    task = await this.prisma.task.update({
-      where: { id: id, userId: userId },
-      data: { status: status },
+    existingTask = await this.prisma.task.update({
+      where: { id: task.id, userId: userId },
+      data: {
+        title: task.title,
+        description: task.description,
+      },
     });
     const updatedTask: ITask = {
-      id: task.id,
-      title: task.title,
-      description: task.description || undefined,
-      status: task.status,
-      createdAt: task.createdAt,
-      updatedAt: task.updatedAt,
+      id: existingTask.id,
+      title: existingTask.title,
+      description: existingTask.description || undefined,
+      status: existingTask.status,
+      createdAt: existingTask.createdAt,
+      updatedAt: existingTask.updatedAt,
     };
     return updatedTask;
   }
