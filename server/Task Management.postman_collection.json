@@ -1,0 +1,155 @@
+{
+  "info": {
+    "_postman_id": "c568fb05-cc94-4c81-b652-0e9532220430",
+    "name": "Task Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+    "_exporter_id": "32083388"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{server}}auth/register"
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{server}}auth/login"
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{server}}auth/logout"
+          },
+          "response": []
+        },
+        {
+          "name": "Verify",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{server}}auth/verify"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Task",
+      "item": [
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"\",\r\n    \"description\": \"\" // optional \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{server}}tasks"
+          },
+          "response": []
+        },
+        {
+          "name": "Get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{server}}tasks"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{server}}tasks/:id",
+              "host": ["{{server}}tasks"],
+              "path": [":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"\",\r\n    \"description\": \"\",\r\n    \"status\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}tasks/:id",
+              "host": ["{{server}}tasks"],
+              "path": [":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "server",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
